@@ -2,21 +2,24 @@ package main
 
 import (
 	"log"
+	"time"
 )
 
 var s = "seven"
 
-func main() {
-	s2 := "six"
-	log.Println("s is ", s)
-	log.Println("s2 is ", s2)
-
-	s4, s5 := saySomething("xxx")
-	log.Println("s4 is ", s4)
-	log.Println("s5 is ", s5)
+type User struct {
+	FirstName   string
+	LastName    string
+	PhoneNumber string
+	Age         int
+	BirthDate   time.Time
 }
 
-func saySomething(s3 string) (string, string) {
-	log.Println("s from saySomething func is ", s3)
-	return s3, "world"
+func main() {
+	user := User{
+		FirstName: "Satya",
+		LastName:  "Sena",
+	}
+
+	log.Println(user.FirstName, user.LastName, "BirthDate :", user.BirthDate)
 }
