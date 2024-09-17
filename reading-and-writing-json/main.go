@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 )
 
@@ -37,4 +38,29 @@ func main() {
 	}
 
 	log.Printf("unmarshalled: %v", unmarshalled)
+
+	var myHero []Person
+
+	var h1 Person
+	h1.FirstName = "Wally"
+	h1.LastName = "West"
+	h1.HairColor = "red"
+	h1.HasDog = false
+
+	myHero = append(myHero, h1)
+
+	var h2 Person
+	h2.FirstName = "Diana"
+	h2.LastName = "Prince"
+	h2.HairColor = "black"
+	h2.HasDog = false
+
+	myHero = append(myHero, h2)
+
+	newJson, err := json.MarshalIndent(myHero, "", "    ")
+	if err != nil {
+		log.Println("error marshalling", err)
+	}
+
+	fmt.Println(string(newJson))
 }
